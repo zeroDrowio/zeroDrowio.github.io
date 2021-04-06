@@ -110,8 +110,8 @@
     
         <article class="post">
             <h1>
-                <a class="title" href="/2021/04/06/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAboke/"> 
-                    我的第一个boke 
+                <a class="title" href="/2021/04/06/docker/"> 
+                    docker 
                 </a>
             </h1>
                         <div class="meta">
@@ -122,17 +122,21 @@
                 
                 
                 
-                    
+                <a class="tag">
+                    <i class="fa fa-tags" aria-hidden="true"></i>  
+                </a>
+                
+                    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-%E9%95%9C%E5%83%8F/" rel="tag">docker 镜像</a></li></ul>
             </div>
             <div class="content">
                 
-                <h1 id="docker是啥"><a href="#docker是啥" class="headerlink" title="docker是啥"></a><em>docker是啥</em></h1><p><em>自己的理解，docker就是可以通过镜像，快速的构建需要的软件，例如，，mysql 普通用户需要下载mysql包，然后按照mysql教程去安装部署，但是通过docker 一条命令就可以完全安装好，通过docker 的命令启动</em></p>
-<h2 id="一、docker-扫盲"><a href="#一、docker-扫盲" class="headerlink" title="一、docker 扫盲"></a><em>一、docker 扫盲</em></h2><p><em>docker 是利用cgroup 资源分脱机制和linux 核心命名空间namespace 构建独立的容器containers , 是操作系统层面虚拟化技术，由于隔离的进程独立于宿主机和其他隔离的进程，所以又叫做容器，docker在容器的基础上进一步的进行封装，从文件系统，网路互联到进程隔离，简化了容器的创建于维护，使得他能够更轻便，快捷，Docker 可以在单一linux 下运行，避免创建一个虚拟机带来的负担。</em></p>
-<h2 id="docker-与虚拟机的区别与特点"><a href="#docker-与虚拟机的区别与特点" class="headerlink" title="docker 与虚拟机的区别与特点"></a><em>docker 与虚拟机的区别与特点</em></h2><p><em>对于咱们这些新手来说，尤其不知道学习docker和建立虚拟机有啥区别，从网络中弄来一张图，来进行一下的对比，</em></p>
+                <h1 id="docker学习"><a href="#docker学习" class="headerlink" title="docker学习"></a><em>docker学习</em></h1><p><em>自己的理解，docker就是可以通过镜像，快速的构建需要的软件，例如，，mysql 普通用户需要下载mysql包，然后按照mysql教程去安装部署，但是通过docker 一条命令就可以完全安装好，通过docker 的命令启动</em></p>
+<h2 id="一、docker-扫盲"><a href="#一、docker-扫盲" class="headerlink" title="一、docker 扫盲"></a>一、docker 扫盲</h2><p><em>docker 是利用cgroup 资源分脱机制和linux 核心命名空间namespace 构建独立的容器containers , 是操作系统层面虚拟化技术，由于隔离的进程独立于宿主机和其他隔离的进程，所以又叫做容器，docker在容器的基础上进一步的进行封装，从文件系统，网路互联到进程隔离，简化了容器的创建于维护，使得他能够更轻便，快捷，Docker 可以在单一linux 下运行，避免创建一个虚拟机带来的负担。</em></p>
+<h3 id="docker-与虚拟机的区别与特点"><a href="#docker-与虚拟机的区别与特点" class="headerlink" title="docker 与虚拟机的区别与特点"></a>docker 与虚拟机的区别与特点</h3><p><em>对于咱们这些新手来说，尤其不知道学习docker和建立虚拟机有啥区别，从网络中弄来一张图，来进行一下的对比，</em></p>
 <p><em><img src="https://i.loli.net/2021/03/06/C8BjaFqW5ye4fE3.png" alt="虚拟机">1、传统的虚拟机需要硬件系统，自己的操作系统，虚拟机一旦启动，就需要对资源预占，    每个虚拟机需要必要的app 二进制库以及整个操作系统。</em></p>
 <p><em><img src="https://i.loli.net/2021/03/06/7zbglNQL84OM2ky.png" alt="docerk"></em></p>
 <p><em>docker 则与宿主机共享硬件资源和内核，与其他容器共享内核，在用户空间以分离的进程运行,容器内没有自己的内核，也没有进行硬件虚拟。</em></p>
-<h3 id="Docker-有什么特点"><a href="#Docker-有什么特点" class="headerlink" title="Docker 有什么特点"></a><em>Docker 有什么特点</em></h3><ul>
+<h3 id="Docker-有什么特点"><a href="#Docker-有什么特点" class="headerlink" title="Docker 有什么特点"></a>Docker 有什么特点</h3><ul>
 <li><p>更快的启动速度 顾名思义 相较于虚拟机，docker 的启动速度在秒级，而虚拟机可能需要几分钟才能启动起来，主要因为直接利用宿主机的内核，无需启动完成的操作系统</p>
 </li>
 <li><p>更高效的资源利用率 因为docker 不需要进行硬件模拟，docker能够更好的进行资源的利用</p>
@@ -149,7 +153,8 @@
 <h2 id="二、docker-的基本概念"><a href="#二、docker-的基本概念" class="headerlink" title="二、docker 的基本概念"></a>二、docker 的基本概念</h2><p>docker 有三剑客 镜像、仓库、容器</p>
 <p>每个来介绍一下</p>
 <ul>
-<li><h6 id="镜像-docker-是一个文件系统，他包含了容器运行需要的资源，文件，程序和库，还包括程序运行的需要的环境变量和一些匿名卷，但是不包含动态数据，一旦构建就不能修改"><a href="#镜像-docker-是一个文件系统，他包含了容器运行需要的资源，文件，程序和库，还包括程序运行的需要的环境变量和一些匿名卷，但是不包含动态数据，一旦构建就不能修改" class="headerlink" title="镜像  docker 是一个文件系统，他包含了容器运行需要的资源，文件，程序和库，还包括程序运行的需要的环境变量和一些匿名卷，但是不包含动态数据，一旦构建就不能修改"></a><strong>镜像</strong>  docker 是一个文件系统，他包含了容器运行需要的资源，文件，程序和库，还包括程序运行的需要的环境变量和一些匿名卷，但是不包含动态数据，一旦构建就不能修改</h6></li>
+<li><p>镜像  docker 是一个文件系统，他包含了容器运行需要的资源，文件，程序和库，还包括程序运行的需要的环境变量和一些匿名卷，但是不包含动态数据，一旦构建就不能修改</p>
+</li>
 <li><p>容器 容器其实就是个进程，但是跟宿主机的其他进程不一样，是在自己的namespace中独立运行的进行，能够进行 启动，停止，暂停，删除操作</p>
 </li>
 <li><p>仓库 构建镜像就可在当前宿主机进行发布，构建，部署，但是在其他虚拟机上怎么部署呢，这就像跟gitlab似的，需要将镜像存储到仓库中，然后到别的机器上时需要将这个仓库中的镜像拉取下来进行构建，部署</p>
@@ -202,7 +207,7 @@
 
 
 <p>因为我之前已经将这个镜像pull下来了，所以现在直接输出了</p>
-<h3 id="四、镜像的使用与发布"><a href="#四、镜像的使用与发布" class="headerlink" title="四、镜像的使用与发布"></a>四、镜像的使用与发布</h3><p>之前提到docker hub 有大量优秀的镜像，docker 怎么把镜像下载下来呢</p>
+<h2 id="四、镜像的使用与发布"><a href="#四、镜像的使用与发布" class="headerlink" title="四、镜像的使用与发布"></a>四、镜像的使用与发布</h2><p>之前提到docker hub 有大量优秀的镜像，docker 怎么把镜像下载下来呢</p>
 <p>docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签]</p>
 <p>其中 Docker 镜像仓库地址若不写则默认为 Docker Hub，</p>
 <p>而仓库名是两段式名称，&lt;用户名&gt;/&lt;软件名&gt;   对于 Docker Hub，如果不给出用户名，则默认为 library，也就是官方镜像。我们拉取一个 ubuntu 16.04 镜像试试：</p>
@@ -253,13 +258,14 @@
 <p>改动成功后怎么把这个镜像保存</p>
 <p>docker commit</p>
 <p>我们所有的改动都会记录到docker的存储层，docker 可以通过docker commit 将存储层构建成镜像，换句话说就是将存储层</p>
-<h4 id="为啥不用docker-commit-定制镜像"><a href="#为啥不用docker-commit-定制镜像" class="headerlink" title="为啥不用docker commit 定制镜像?"></a>为啥不用docker commit 定制镜像?</h4><p>但是实际环境中并不推荐如上所示的 commit 用法，具体可以查看《Docker 从入门到实践》中的描述，总结下来为三点：</p>
+<p>为啥不用docker commit 定制镜像?</p>
+<p>但是实际环境中并不推荐如上所示的 commit 用法，具体可以查看《Docker 从入门到实践》中的描述，总结下来为三点：</p>
 <ol>
 <li>由于 commit 命令的执行，有很多文件被改动或添加了。这还仅仅是最简单的操作，如果是安装软件包、编译构建，那会有大量的无关内容被添加进来，如果不小心清理，将会导致镜像极为臃肿。</li>
 <li>使用 commit 生成的镜像也被称为黑箱镜像，换句话说，就是除了制作镜像的人知道执行过什么命令、怎么生成的镜像，别人根本无从得知。</li>
 <li>不符合分层存储的概念，即除当前层外，之前的每一层都是不会发生改变的。</li>
 </ol>
-<h4 id="scratch-空白镜像"><a href="#scratch-空白镜像" class="headerlink" title="scratch 空白镜像"></a>scratch 空白镜像</h4><p>表示不依赖任何的基础镜像，以第一层开始构建，</p>
+<h3 id="scratch-空白镜像"><a href="#scratch-空白镜像" class="headerlink" title="scratch 空白镜像"></a>scratch 空白镜像</h3><p>表示不依赖任何的基础镜像，以第一层开始构建，</p>
 <p>docker ps 查看ps 命令的作用</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps  -h</span><br></pre></td></tr></table></figure>
 
@@ -276,7 +282,7 @@
                 
             </div>
             <div class="continue">
-            <a href="/2021/04/06/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAboke/">
+            <a href="/2021/04/06/docker/">
             Continue            <i class="fa fa-angle-right" aria-hidden="true"></i>
             </a>
             </div>
